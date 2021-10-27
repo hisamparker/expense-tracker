@@ -44,8 +44,8 @@ function App() {
   }
   return (
     <>
-      <ExpenseContainer expenses={expenses} />
       <NewExpense onAddExpense={handleAddExpense} />
+      <ExpenseContainer expenses={expenses} />
     </>
   );
 }

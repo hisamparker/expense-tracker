@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Form.css';
 
-const Form = ({onSubmitExpenseData}) => {
+const Form = ({onSubmitExpenseData, handleSetIsFormVisible}) => {
   const [form, setForm] = useState({
     title: "",
     amount: "",
@@ -43,47 +43,53 @@ const Form = ({onSubmitExpenseData}) => {
     console.log(expenseData);
   };
 
+  const handleCancel = () => {
+    handleSetIsFormVisible()
+    clearForm()
+  }
+
   const {title, amount, date} = form;
-  
+
   return (
     <form onSubmit={handleSubmit}>
-    <div className="controls">
-      <div className="control">
-        <label>Title</label>
-        <input 
-          type="text" 
-          name="title"
-          value={title}
-          onChange={handleForm}
-        />
+      <div className="controls">
+        <div className="control">
+          <label>Title</label>
+          <input 
+            type="text" 
+            name="title"
+            value={title}
+            onChange={handleForm}
+          />
+        </div>
+        <div className="control">
+          <label>Amount</label>
+          <input
+            name='amount'
+            value={amount}
+            type="number"
+            min="0.01"
+            step="0.01"
+            onChange={handleForm}
+          />
+        </div>
+        <div className="control">
+          <label>Date</label>
+          <input
+            name="date"
+            value={date}
+            type="date"
+            min="2019-01-01"
+            max="2022-12-31"
+            onChange={handleForm}
+          />
+        </div>
       </div>
-      <div className="control">
-        <label>Amount</label>
-        <input
-          name='amount'
-          value={amount}
-          type="number"
-          min="0.01"
-          step="0.01"
-          onChange={handleForm}
-        />
+      <div className="actions">
+        <button type="submit" onClick={handleSetIsFormVisible}>Add Your Expense</button>
+        <button type="button" onClick={handleCancel}>Cancel</button>
       </div>
-      <div className="control">
-        <label>Date</label>
-        <input
-          name="date"
-          value={date}
-          type="date"
-          min="2019-01-01"
-          max="2022-12-31"
-          onChange={handleForm}
-        />
-      </div>
-    </div>
-    <div className="actions">
-      <button type="submit">Add Expense</button>
-    </div>
-  </form>
+    </form>
   )
 }
 
