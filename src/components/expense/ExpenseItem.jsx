@@ -3,7 +3,7 @@ import Card from '../ui/Card';
 import './ExpenseItem.css';
 import { useState } from 'react';
 
-const ExpenseItem = ({title, amount, date, key}) => {
+const ExpenseItem = ({title, amount, date}) => {
    // function handleOnClick() {}
    const [isTitle, setIsTitle] = useState(title);
    console.log('ExpenseItem evaluated by React');
@@ -13,7 +13,7 @@ const ExpenseItem = ({title, amount, date, key}) => {
      console.log(isTitle);
    };
   return (
-    <Card key={key} className="expense-item">
+    <Card className="expense-item">
       <Date date={date} />
       <section className="expense-item__description">
         <h2>{isTitle}</h2>
