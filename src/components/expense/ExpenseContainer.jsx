@@ -18,14 +18,6 @@ const ExpenseContainer = ({ expenses }) => {
     <>
       <Card className="expenses">
         <h1>Expenses</h1>
-        {expenses.map((expense) => (
-          <ExpenseItem
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-            key={expense.id}
-          />
-        ))}
         <FilterDropDown handleFilteredExpense={handleFilteredExpense} expenses={expenses} />
         <ExpensesList isSelected={filteredYear} items={filteredExpenses} />
       </Card>
